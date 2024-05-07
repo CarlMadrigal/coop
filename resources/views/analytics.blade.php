@@ -29,7 +29,7 @@
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/carabao"><span class="material-symbols-rounded ">format_list_bulleted</span><p>Carabaos</p></a>
-            <a href="/users.html"><span class="material-symbols-rounded ">group</span><p>Users</p></a>
+            <a href="/users"><span class="material-symbols-rounded ">group</span><p>Users</p></a>
             <a href="/analytics" class="active"><span class="material-symbols-rounded active-icon">pie_chart</span><p>Analytics</p></a>
             <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>

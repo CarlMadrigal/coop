@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\CarabaoController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\CooperativeController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/notification', [RedirectController::class, 'redirectToNotificationpage']);
 
+Route::get('/delete/{id}', [NotificationController::class, 'delete']);
+
+Route::get('/deleteall', [NotificationController::class, 'deleteAll']);
+
 Route::get('/carabao', [RedirectController::class, 'redirectToCarabaospage']);
 
 Route::get('/users', [RedirectController::class, 'redirectToUserspage']);
@@ -36,3 +42,8 @@ Route::get('/analytics', [RedirectController::class, 'redirectToLearningAnalytic
 Route::get('/carabao/register', [RedirectController::class, 'redirectToRegisterCarabaopage']);
 
 Route::post('/carabao/register/process', [CarabaoController::class, 'register']);
+
+Route::get('/upload/{id}', [RedirectController::class, 'redirectToUploadMaterialspage']);
+
+Route::post('/upload/process', [UploadController::class, 'upload']); 
+

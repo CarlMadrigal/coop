@@ -141,11 +141,9 @@
                 <div class="car-breed">
                     <h2>Carabao's Breed</h2>
                     <div class="box">
-                        <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Philippine">Philippine</h3><p>60%</p></div>
-                        <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Murrah">Murrah</h3><p>10%</p></div>
-                        <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Nelore">Nelore</h3><p>5%</p></div>
-                        <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Jafarabadi">Jafarabadi</h3><p>13%</p></div>
-                        <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Pandharpuri">Pandharpuri</h3><p>7%</p></div>
+                        @foreach ($carabaos as $carabao)
+                            <div class="breeds"><img src="{{ asset('images/carabao-profile.png') }}" width="50px"><h3 value="Philippine">{{$carabao->breed}}</h3><p>0%</p></div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="car-gender">
@@ -163,36 +161,15 @@
         <div class="recent-updates">
             <h2>Recent Updates</h2>
             <div class="recUp-con">
-                <div class="recUp">
-                    <img src="{{ asset('images/user-profile.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Carl Madrigal</span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
+                @foreach ($notifs as $notif)
+                    <div class="recUp">
+                        <img src="{{ asset('images/user-profile.png') }}" alt="" width="110px">
+                        <div class="recUp-details">
+                            <p><span id="up-name">{{$notif->title}}</span> {{$notif->message}}</p>
+                            <small id="time">{{ $notif->created_at->format('Y-m-d') }}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="recUp">
-                    <img src="{{ asset('images/user-profile.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Carl Madrigal</span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-                <div class="recUp">
-                    <img src="{{ asset('images/user-profile.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Carl Madrigal</span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-                <div class="recUp">
-                    <img src="{{ asset('images/user-profile.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Carl Madrigal</span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-                
-                
+                @endforeach
             </div>
         </div>
 

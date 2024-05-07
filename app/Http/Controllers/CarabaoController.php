@@ -48,6 +48,7 @@ class CarabaoController extends Controller
             ];
             Notification::create($notification);
             
+            flash()->addSuccess('Carabao Successfully Registered');
             return redirect('/carabao');
         }
     }

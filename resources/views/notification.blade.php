@@ -46,7 +46,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="" id="delete"><p>Delete All</p><span class="material-symbols-rounded">delete</span></a>
+                <a href="/deleteall" id="delete"><p>Delete All</p><span class="material-symbols-rounded">delete</span></a>
                 <a href="" id="fltr"><p>Filter</p><span class="material-symbols-rounded">page_info</span></a>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Upload;
 use App\Models\Carabao;
 use App\Models\Cooperative;
 use App\Models\Notification;
@@ -14,10 +15,14 @@ class RedirectController extends Controller
     function redirectToHomepage(Request $request) {
         if(Auth::check()){
             $carabao = Auth::user()->cooperative->carabaos;
+            $coop = User::where('role', 'coop_head')->get();
             $user = Auth::user()->cooperative->users()->where('role', 'user')->get();
+            $notif = Notification::orderBy('created_at', 'desc')->get();
             return view('dashboard',[
                 'carabaos' => $carabao,
-                'users' => $user
+                'users' => $user,
+                'coops' => $coop,
+                'notifs' => $notif
             ]);
         }       
         return view('login');
@@ -45,7 +50,12 @@ class RedirectController extends Controller
     }
     
     function redirectToLearningMaterialpage(Request $request) {
-        return view('learning_material');
+        $files = Auth::user()->cooperative->uploads()->orderBy('created_at', 'desc')->get();
+        $coop_id = Auth::user()->cooperative_id;
+        return view('files_container', [
+            'files' => $files,
+            'coop_id' => $coop_id
+        ]);
     }
 
     function redirectToLearningAnalyticspage(Request $request) {
@@ -62,5 +72,9 @@ class RedirectController extends Controller
         return view('register_carabao', [
             'users' => $user
         ]);
+    }
+
+    function redirectToUploadMaterialspage(Request $request) {
+        return view('upload_materials');
     }
 }

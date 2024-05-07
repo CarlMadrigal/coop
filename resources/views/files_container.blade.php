@@ -46,32 +46,22 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a><span class="material-symbols-rounded">Upload</span><p>Upload</p></a>
+                <a href="/upload/{{$coop_id}}"><span class="material-symbols-rounded">upload</span><p>Materials</p></a>
                 <a href="/users" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
         <!-- Content -->
-        <div class="mats-content">
-            <a href="#" class="mats-con">
-                <img src="{{ asset('images/file.png') }}" alt="" width="400px">
-                <h2>Files</h2>
-            </a>
-
-            <a href="#" class="mats-con">
-                <img src="{{ asset('images/video.png') }}" alt="" width="400px">
-                <h2>Videos</h2>
-            </a>
-
-            <a href="#" class="mats-con">
-                <img src="{{ asset('images/link.png') }}" alt="" width="400px">
-                <h2>Links</h2>
-            </a>
-
-            <a href="#" class="mats-con">
-                <img src="{{ asset('images/e-book.png') }}" alt="" width="400px">
-                <h2>E-Books</h2>
-            </a>
+        <div class="file-con">
+            @foreach ($files as $file)
+                <div class="files">
+                    <img src="{{ asset('images/fileIcon.png') }}">
+                    <div class="file-details">
+                        <h3 id="fileName">{{$file->name}}</h3>
+                        <p id="fileDescription">{{$file->description}}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 
