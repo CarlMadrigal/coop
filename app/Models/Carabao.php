@@ -12,6 +12,7 @@ class Carabao extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'status',
         'breed',
         'weight',
         'cooperative_id'

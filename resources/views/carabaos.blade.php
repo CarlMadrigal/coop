@@ -81,7 +81,7 @@
                                 <td id="carabao-id">#{{$carabao->id}}</td>
                                 <td id="owner">{{$carabao->user->name}}</td>
                                 <td id="milk-prod">100 L</td>
-                                <td><p id="status">Healthy</p></td>
+                                <td><p id="status">{{$carabao->status}}</p></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -15,13 +15,11 @@ class RedirectController extends Controller
     function redirectToHomepage(Request $request) {
         if(Auth::check()){
             $carabao = Auth::user()->cooperative->carabaos;
-            $coop = User::where('role', 'coop_head')->get();
             $user = Auth::user()->cooperative->users()->where('role', 'user')->get();
-            $notif = Notification::orderBy('created_at', 'desc')->get();
+            $notif = Auth::user()->cooperative->notifications()->orderBy('created_at', 'desc')->get();
             return view('dashboard',[
                 'carabaos' => $carabao,
                 'users' => $user,
-                'coops' => $coop,
                 'notifs' => $notif
             ]);
         }       
@@ -50,7 +48,7 @@ class RedirectController extends Controller
     }
     
     function redirectToLearningMaterialpage(Request $request) {
-        $files = Auth::user()->cooperative->uploads()->orderBy('created_at', 'desc')->get();
+        $files = Upload::where('cooperative_id', Auth::user()->cooperative->id)->orWhere('cooperative_id', null)->orderBy('created_at', 'desc')->get();
         $coop_id = Auth::user()->cooperative_id;
         return view('files_container', [
             'files' => $files,
