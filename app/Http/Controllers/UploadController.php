@@ -48,6 +48,7 @@ class UploadController extends Controller
 
             $notification = [
                 'cooperative_id' => $request->cooperative,
+                'user_id' => $request->owner,
                 'title' => 'File/Link Successfully Uploaded',
                 'message' => $request->name . ' has been Successfully Uploaded',
             ];
