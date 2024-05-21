@@ -34,4 +34,8 @@ class Cooperative extends Model
     public function uploads() {
         return $this->hasMany(Upload::class);
     }
+    
+    public function needs() {
+        return $this->hasMany(Need::class);
+    }
 }

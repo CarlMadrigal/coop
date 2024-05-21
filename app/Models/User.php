@@ -53,4 +53,12 @@ class User extends Authenticatable
     public function carabaos() {
         return $this->hasMany(Carabao::class);
     }
+    
+    public function concerns() {
+        return $this->hasMany(Concern::class);
+    }
+
+    public function notifications(){
+        return $this->hasMany(Notification::class);
+    }
 }

@@ -80,7 +80,7 @@
                                 <td id="carabao-name">{{$carabao->name}}</td>
                                 <td id="carabao-id">#{{$carabao->id}}</td>
                                 <td id="owner">{{$carabao->user->name}}</td>
-                                <td id="milk-prod">100 L</td>
+                                <td id="milk-prod">{{$carabao->needs()->sum('milk')}} L</td>
                                 <td><p id="status">{{$carabao->status}}</p></td>
                             </tr>
                             @endforeach

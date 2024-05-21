@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Need;
 use App\Models\User;
 use App\Models\Upload;
 use App\Models\Carabao;
@@ -15,10 +16,18 @@ class RedirectController extends Controller
     function redirectToHomepage(Request $request) {
         if(Auth::check()){
             $carabao = Auth::user()->cooperative->carabaos;
+            $milk = Need::where('cooperative_id', Auth::user()->cooperative_id)->sum('milk');
+            $heathy = Carabao::where('status', 'Healthy')->get();
+            $unheathy = Carabao::where('status', 'Sick')->get();
+            $pregnant = Carabao::where('status', 'Pregnant')->get();
             $user = Auth::user()->cooperative->users()->where('role', 'user')->get();
             $notif = Auth::user()->cooperative->notifications()->orderBy('created_at', 'desc')->get();
             return view('dashboard',[
                 'carabaos' => $carabao,
+                'milks' => $milk,
+                'healthy' => $heathy,
+                'unhealthy' => $unheathy,
+                'pregnant' => $pregnant,
                 'users' => $user,
                 'notifs' => $notif
             ]);
@@ -58,9 +67,17 @@ class RedirectController extends Controller
 
     function redirectToLearningAnalyticspage(Request $request) {
         $carabao = Auth::user()->cooperative->carabaos;
+        $milk = Need::where('cooperative_id', Auth::user()->cooperative_id)->sum('milk');
+        $heathy = Carabao::where('status', 'Healthy')->get();
+        $unheathy = Carabao::where('status', 'Sick')->get();
+        $pregnant = Carabao::where('status', 'Pregnant')->get();
         $user = Auth::user()->cooperative->users()->where('role', 'user')->get();
         return view('analytics',[
             'carabaos' => $carabao,
+            'milk' => $milk,
+            'healthy' => $heathy,
+            'unhealthy' => $unheathy,
+            'pregnant' => $pregnant,
             'users' => $user
         ]);
     }

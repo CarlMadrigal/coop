@@ -76,7 +76,7 @@
                     <img src="{{ asset('images/milk.png') }}" alt="">
                     <div>
                         <p>Produced<br><span class="highlight">MILK</span></p>
-                        <h2>20754 <small>liters</small></h2> 
+                        <h2>{{$milk}} <small>liters</small></h2> 
                     </div>
 
                 </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="right">
                             <h3>Healthy</h3>
-                            <h2><span id="count-carabao">5360</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($healthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="right">
                             <h3>Unhealthy</h3>
-                            <h2><span id="count-carabao">600</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($unhealthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="right">
                             <h3>Under Observation</h3>
-                            <h2><span id="count-carabao">1200</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($pregnant)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
